@@ -66,12 +66,11 @@ html, body{
     var http = new Http('text');
     var dataHolder = document.getElementById('data');
 
-var post = "http://httpbin.org/post";
-var get = "http://httpbin.org/headers";
+var url = "https://reqres.in/api/users";
 
 function _get(){
   dataHolder.innerHTML = 'loading ...';
-  http.get(get).then(function (res) {
+  http.get(url).then(function (res) {
     dataHolder.innerHTML = res;
 });
 }
@@ -79,7 +78,10 @@ function _get(){
 
 function _post(){
   dataHolder.innerHTML = 'loading ...';
-  http.post(post, {date : Date(), Location : window.Location}).then(function (res) {
+  http.post(url, {
+    "name": "karim",
+    "job": "FullStack Web Developer"
+}).then(function (res) {
     dataHolder.innerHTML = res;
 });
 }
