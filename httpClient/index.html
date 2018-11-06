@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" content-type="text/html" />
+  <title>httpClient | OpenUp</title>
+  <script src="httpClient.min.js"></script>
+
+<style type="text/css">
+  
+html, body{
+  margin: auto;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#data{
+  display: block;
+  margin: 5em;
+  border-radius: 6px;
+  padding: 12px;
+  background: #f0f0f0;
+  color: #333;
+  font-size: 12px;
+  font-family: verdana;
+  box-shadow: 0 0 7px 0 #999;
+}
+
+.buttons{
+  display: block;
+  margin: 5em;
+  text-align: left;
+  padding: 6px;
+}
+
+.buttons > button{
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  background : #45a1ff;
+  padding: 6px 12px;
+  border : none;
+  box-shadow: 0 0 7px 0 #eaeaea;
+  margin: auto 8px;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="buttons">
+  <button onclick="_get();">GET</button>
+  <button onclick="_post();">POST</button>
+</div>
+
+<div id="data">
+  no data loaded !
+</div>
+
+  <script>
+
+    var http = new Http('text');
+    var dataHolder = document.getElementById('data');
+
+var post = "http://httpbin.org/post";
+var get = "http://httpbin.org/headers";
+
+function _get(){
+  dataHolder.innerHTML = 'loading ...';
+  http.get(get).then(function (res) {
+    dataHolder.innerHTML = res;
+});
+}
+
+
+function _post(){
+  dataHolder.innerHTML = 'loading ...';
+  http.post(post, {date : Date(), Location : window.Location}).then(function (res) {
+    dataHolder.innerHTML = res;
+});
+}
+
+
+
+  </script>
+</body>
+
+</html>
