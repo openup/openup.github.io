@@ -55,6 +55,7 @@ html, body{
 <div class="buttons">
   <button onclick="_get();">GET</button>
   <button onclick="_post();">POST</button>
+  <button onclick="_stop();">Cancel</button>
 </div>
 
 <div id="data">
@@ -67,6 +68,12 @@ html, body{
     var dataHolder = document.getElementById('data');
 
 var url = "https://reqres.in/api/users";
+
+
+function _stop(){
+  http.abort();
+}
+
 
 function _get(){
   dataHolder.innerHTML = 'loading ...';
@@ -82,6 +89,7 @@ function _post(){
     "name": "karim",
     "job": "FullStack Web Developer"
 }).then(function (res) {
+  console.log(res)
     dataHolder.innerHTML = res;
 });
 }
