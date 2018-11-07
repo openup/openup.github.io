@@ -7,7 +7,9 @@
   <script src="httpClient.min.js"></script>
 
 <style type="text/css">
-  
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+
 html, body{
   margin: auto;
   padding: 0;
@@ -22,7 +24,7 @@ html, body{
   background: #f0f0f0;
   color: #333;
   font-size: 12px;
-  font-family: verdana;
+  font-family: 'Exo 2', sans-serif;
   box-shadow: 0 0 4px 0 #999;
   writing-mode: lr;
   overflow-wrap: normal;
@@ -30,6 +32,22 @@ html, body{
   white-space: pre-wrap;
   max-height: 70vh;
   overflow-y: overlay;
+}
+
+
+#data > .loading{
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 20px 0;
+  font-size: 18px;
+  color: #666;
+}
+
+#data > .loading > em{
+    color: #45a5fe;
+    font-size: 32px;
+    font-weight: 600;
 }
 
 .buttons{
@@ -85,7 +103,8 @@ html, body{
   <script>
 
     var http = new Http();
-    var dataHolder = document.getElementById('data');
+    const dataHolder = document.getElementById('data');
+    const loaderHTML = '<div class="loading"><em class="fa fa-spin fa-circle-o-notch"></em><p>loading...</p></div>';
 
 
 
@@ -102,7 +121,7 @@ function print(res){
 
 function _get(){
 var url = document.getElementById('url').value;
-  dataHolder.innerHTML = 'loading ...';
+  dataHolder.innerHTML = loaderHTML;
   http.get(url).then(function (res) {
     print(res);
 });
@@ -112,7 +131,7 @@ var url = document.getElementById('url').value;
 function _post(){
 
 var url = document.getElementById('url').value;
-  dataHolder.innerHTML = 'loading ...';
+  dataHolder.innerHTML = loaderHTML;
   http.post(url, {
     "name": "karim",
     "job": "FullStack Web Developer"
