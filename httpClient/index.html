@@ -14,6 +14,28 @@ html, body{
   margin: auto;
   padding: 0;
   overflow-x: hidden;
+  font-family: 'Exo 2', sans-serif;
+}
+
+header{
+  display: block;
+  width: 100%;
+  background-color: #98a7fe;
+  text-align: right;
+  padding: 4px 22px 6px 0;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+header > a{
+  margin: auto 6px;
+  text-decoration: none;
+  color: #fff;
+  transition: .3s;
+}
+
+header > a:hover{
+  color: #eaeaea;
 }
 
 #data{
@@ -24,7 +46,6 @@ html, body{
   background: #f0f0f0;
   color: #333;
   font-size: 12px;
-  font-family: 'Exo 2', sans-serif;
   box-shadow: 0 0 4px 0 #999;
   writing-mode: lr;
   overflow-wrap: normal;
@@ -87,7 +108,10 @@ html, body{
 </head>
 
 <body>
-
+<header>
+<a href="https://github.com/openup" target="_blank"><em class="fa fa-github"></em>&nbsp;GitHub</a>
+<a href="https://karim.tn" target="_blank"><em class="fa fa-home"></em>&nbsp;karim.tn</a>
+</header>
 
 <div class="buttons">
   <input type="text" id="url" value="https://reqres.in/api/users" placeholder="enter api url here..." />
