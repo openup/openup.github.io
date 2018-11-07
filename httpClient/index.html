@@ -66,6 +66,12 @@ header > a:hover{
   white-space: pre-wrap;
   max-height: 67vh;
   overflow-y: overlay;
+  transition: .4s;
+}
+
+#data.error{
+  color: #ffffff;
+  background: #ff0003;
 }
 
 
@@ -142,6 +148,7 @@ header > a:hover{
     var http = new Http();
     const dataHolder = document.getElementById('data');
     const loaderHTML = '<div class="loading"><em class="fa fa-spin fa-circle-o-notch"></em><p>loading...</p></div>';
+    const input = document.getElementById('url');
 
 
 
@@ -149,31 +156,40 @@ function _stop(){
   http.abort();
 }
 
-function print(res){
+function print(res, error = false){
     res = JSON.stringify(res, null, 4);
+    if(error)
+    dataHolder.className = 'error'; 
+
     dataHolder.innerHTML = res;
     console.log(res);
 }
 
 
 function _get(){
-var url = document.getElementById('url').value;
+var url = input.value;
+  dataHolder.className = '';
   dataHolder.innerHTML = loaderHTML;
   http.get(url).then(function (res) {
     print(res);
+}).catch((err) => {
+  print(err, true);
 });
 }
 
 
 function _post(){
 
-var url = document.getElementById('url').value;
+var url = input.value;
+  dataHolder.className = '';
   dataHolder.innerHTML = loaderHTML;
   http.post(url, {
     "name": "karim",
     "job": "FullStack Web Developer"
 }).then(function (res) {
     print(res);
+}).catch((err) => {
+  print(err, true);
 });
 }
 
